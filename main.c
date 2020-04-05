@@ -1,7 +1,7 @@
 #include "ch.h" //DONT TOUCH : NECESSARY  FOR COMPILATION
 #include "hal.h"
 #include "memory_protection.h"
-//#include <sensors/proximity.h>
+#include <sensors/proximity.h>
 #include <chprintf.h> /*needed for*/
 #include <usbcfg.h>	 /*the chprintf fonction*/
 #include <motors.h>
@@ -14,19 +14,25 @@ int main(void)
     chSysInit();
     mpu_init();
 
-    //Init the motors
-    motors_init();
+    //start the USB communication
+    usb_start();
+
+	//init the motors
+	motors_init();
 
     //proximity_start();
 	//calibrate_ir();
-	/*int distance;
-	//chprintf((BaseSequentialStream *)&SDU1,"distance = %d\r\n", distance);*/
+    int distance = get_prox(1);
+	//int distance;
+	//chprintf((BaseSequentialStream *)&SDU1,"distance = %d\r\n", distance);
 
     set_direction(right);
     set_direction(left);
 
 	while (1) {
-
+		 chprintf((BaseSequentialStream *)&SDU1,"distance = %d\r\n", distance);
+		 distance = get_prox(1);
+		 chThdSleepMilliseconds(500); //wait 0.5s
 	}
 }
 
