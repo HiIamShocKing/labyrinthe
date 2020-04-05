@@ -44,7 +44,64 @@ build/obj/main.o: main.c \
  ../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/chmempools.h \
  ../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/chdynamic.h \
  ../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/chqueues.h \
- ../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/chstreams.h
+ ../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/chstreams.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/hal.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/osal/rt/osal.h \
+ halconf.h mcuconf.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/STM32F4xx/hal_lld.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/STM32F4xx/stm32_registry.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/common/ARMCMx/nvic.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/STM32F4xx/stm32_isr.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/STM32F4xx/stm32_dma.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/STM32F4xx/stm32_rcc.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/hal_streams.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/hal_channels.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/hal_files.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/hal_ioblock.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/hal_mmcsd.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/hal_queues.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/pal.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/GPIOv2/pal_lld.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/adc.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/STM32F4xx/adc_lld.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/can.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/can_lld.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/dac.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/DACv1/dac_lld.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/ext.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/ext_lld.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/gpt.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/TIMv1/gpt_lld.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/TIMv1/stm32_tim.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/i2c.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/I2Cv1/i2c_lld.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/i2s.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/SPIv1/i2s_lld.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/icu.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/mac.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/mii.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/pwm.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/TIMv1/pwm_lld.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/rtc.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/serial.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/USARTv1/serial_lld.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/sdc.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/sdc_lld.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/spi.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/SPIv1/spi_lld.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/uart.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/usb.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/OTGv1/usb_lld.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/OTGv1/stm32_otg.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/st.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/TIMv1/st_lld.h \
+ mcuconf.h \
+ ../../lib/e-puck2_main-processor/ChibiOS_ext/os/hal/ports/STM32/STM32F4xx/stm32_registry.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/mmc_spi.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/serial_usb.h \
+ ../../lib/e-puck2_main-processor/src/memory_protection.h \
+ ../../lib/e-puck2_main-processor/src/leds.h \
+ ../../lib/e-puck2_main-processor/src/motors.h
 
 ../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/ch.h:
 
@@ -137,3 +194,119 @@ chconf.h:
 ../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/chqueues.h:
 
 ../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/chstreams.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/hal.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/osal/rt/osal.h:
+
+halconf.h:
+
+mcuconf.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/STM32F4xx/hal_lld.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/STM32F4xx/stm32_registry.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/common/ARMCMx/nvic.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/STM32F4xx/stm32_isr.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/STM32F4xx/stm32_dma.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/STM32F4xx/stm32_rcc.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/hal_streams.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/hal_channels.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/hal_files.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/hal_ioblock.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/hal_mmcsd.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/hal_queues.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/pal.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/GPIOv2/pal_lld.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/adc.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/STM32F4xx/adc_lld.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/can.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/can_lld.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/dac.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/DACv1/dac_lld.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/ext.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/ext_lld.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/gpt.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/TIMv1/gpt_lld.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/TIMv1/stm32_tim.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/i2c.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/I2Cv1/i2c_lld.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/i2s.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/SPIv1/i2s_lld.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/icu.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/mac.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/mii.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/pwm.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/TIMv1/pwm_lld.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/rtc.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/serial.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/USARTv1/serial_lld.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/sdc.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/sdc_lld.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/spi.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/SPIv1/spi_lld.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/uart.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/usb.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/OTGv1/usb_lld.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/OTGv1/stm32_otg.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/st.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/LLD/TIMv1/st_lld.h:
+
+mcuconf.h:
+
+../../lib/e-puck2_main-processor/ChibiOS_ext/os/hal/ports/STM32/STM32F4xx/stm32_registry.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/mmc_spi.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/serial_usb.h:
+
+../../lib/e-puck2_main-processor/src/memory_protection.h:
+
+../../lib/e-puck2_main-processor/src/leds.h:
+
+../../lib/e-puck2_main-processor/src/motors.h:
