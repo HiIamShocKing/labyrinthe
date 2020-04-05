@@ -33,7 +33,7 @@ void turn_left(uint16_t angle) {
 
 }
 
-//Turn the robot to the left of a given angle in degrees between 0 et 360
+//Turn the robot to the right of a given angle in degrees between 0 et 360
 void turn_right(uint16_t angle) {
 	//Put the pos counter to 0
 	left_motor_set_pos(0);
@@ -68,10 +68,10 @@ void set_direction(enum direction direction) {
 	    right_motor_set_speed(-MOTOR_SPEED_LIMIT);
 		break;
 	case left:
-		turn_left(90);
+		turn_left((uint16_t)90);
 		break;
 	case right:
-		turn_right(90);
+		turn_right((uint16_t)90);
 		break;
 	}
 }
