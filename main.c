@@ -1,11 +1,19 @@
 #include "ch.h" //DONT TOUCH : NECESSARY  FOR COMPILATION
 #include "hal.h"
 #include "memory_protection.h"
+
+#include <main.h>
 #include <sensors/proximity.h>
-#include <chprintf.h> /*needed for*/
-#include <usbcfg.h>	 /*the chprintf fonction*/
+#include <chprintf.h> //needed for
+#include <usbcfg.h>	 //the chprintf fonction
 #include <motors.h>
 #include <manage_motors.h>
+#include <pi_regulator_distance_right_wall.h>
+
+messagebus_t bus;             //needed to
+MUTEX_DECL(bus_lock);         //be able to use
+CONDVAR_DECL(bus_condvar);    //proximity sensors
+
 
 int main(void)
 {
@@ -20,19 +28,18 @@ int main(void)
 	//init the motors
 	motors_init();
 
-    //proximity_start();
-	//calibrate_ir();
-    int distance = get_prox(1);
-	//int distance;
-	//chprintf((BaseSequentialStream *)&SDU1,"distance = %d\r\n", distance);
+	//Init message bus
+	messagebus_init(&bus, &bus_lock, &bus_condvar);
 
-    set_direction(right);
-    set_direction(left);
+	//start and calibrate proximity sensors
+    proximity_start();
+	calibrate_ir();
+
+	//stars the thread for the pi regulator
+	pi_regulator_start();
 
 	while (1) {
-		 chprintf((BaseSequentialStream *)&SDU1,"distance = %d\r\n", distance);
-		 distance = get_prox(1);
-		 chThdSleepMilliseconds(500); //wait 0.5s
+		chThdSleepMilliseconds(1000); //wait 1s
 	}
 }
 
