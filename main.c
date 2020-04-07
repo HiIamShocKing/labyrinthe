@@ -29,7 +29,7 @@ int main(void)
 	//init the motors
 	motors_init();
 
-	//Init message bus
+	//Init message bus, needed to use the proximity sensors
 	messagebus_init(&bus, &bus_lock, &bus_condvar);
 
 	//start and calibrate proximity sensors

@@ -54,7 +54,7 @@ void check_for_path(void) {
 
 }
 
-static THD_WORKING_AREA(waFindPathToExit, 256);
+static THD_WORKING_AREA(waFindPathToExit, 512);
 static THD_FUNCTION(FindPathToExit, arg) {
 
     chRegSetThreadName(__FUNCTION__);
@@ -65,7 +65,7 @@ static THD_FUNCTION(FindPathToExit, arg) {
     while(1){
         time = chVTGetSystemTime();
 
-        //check_for_path();
+        check_for_path();
 
         //10Hz
         chThdSleepUntilWindowed(time, time + MS2ST(100));
