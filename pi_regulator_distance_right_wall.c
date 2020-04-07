@@ -75,11 +75,11 @@ static THD_FUNCTION(PiRegulator, arg) {
 
         if(distance == too_close) {
         		//turn robot on the left if robot is too close from right wall
-        		turn_left((uint16_t)2);
+        		turn_left((uint16_t)4);
         		set_direction(forward);
         } else if(distance == too_far) {
         		//turn robot on the right if robot is too far from right wall
-        		turn_right((uint16_t)2);
+        		turn_right((uint16_t)4);
         		set_direction(forward);
         }
 

@@ -9,6 +9,7 @@
 #include <motors.h>
 #include <manage_motors.h>
 #include <pi_regulator_distance_right_wall.h>
+#include <find_path_to_exit.h>
 
 messagebus_t bus;             //needed to
 MUTEX_DECL(bus_lock);         //be able to use
@@ -35,8 +36,9 @@ int main(void)
     proximity_start();
 	calibrate_ir();
 
-	//stars the thread for the pi regulator
+	//stars the thread for the pi regulator and to find the exit of the labyrinthe
 	pi_regulator_start();
+	find_path_to_exit_start();
 
 	while (1) {
 		chThdSleepMilliseconds(1000); //wait 1s
