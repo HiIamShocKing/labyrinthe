@@ -9,6 +9,7 @@
 #include <motors.h>
 #include <manage_motors.h>
 #include <find_path_to_exit.h>
+#include <process_image.h>
 
 messagebus_t bus;             //needed to
 MUTEX_DECL(bus_lock);         //be able to use
@@ -17,6 +18,7 @@ CONDVAR_DECL(bus_condvar);    //proximity sensors
 
 int main(void)
 {
+
 	//OBLIGATOIRE
     halInit();
     chSysInit();
@@ -24,6 +26,10 @@ int main(void)
 
     //start the USB communication
     usb_start();
+
+    //starts the camera
+    dcmi_start();
+	po8030_start();
 
 	//init the motors
 	motors_init();
@@ -37,6 +43,7 @@ int main(void)
 
 	//stars the thread to find the exit of the labyrinthe
 	find_path_to_exit_start();
+	process_image_start();
 
 	while (1) {
 		chThdSleepMilliseconds(1000); //wait 1s
