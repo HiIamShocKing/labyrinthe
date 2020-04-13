@@ -127,7 +127,7 @@ build/obj/main.o: main.c \
  /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h \
  ../../lib/e-puck2_main-processor/src/usbcfg.h \
  ../../lib/e-puck2_main-processor/src/motors.h manage_motors.h \
- pi_regulator_distance_right_wall.h find_path_to_exit.h
+ find_path_to_exit.h
 
 ../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/ch.h:
 
@@ -390,7 +390,5 @@ main.h:
 ../../lib/e-puck2_main-processor/src/motors.h:
 
 manage_motors.h:
-
-pi_regulator_distance_right_wall.h:
 
 find_path_to_exit.h:

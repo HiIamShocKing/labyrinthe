@@ -8,7 +8,6 @@
 #include <usbcfg.h>	 //the chprintf fonction
 #include <motors.h>
 #include <manage_motors.h>
-#include <pi_regulator_distance_right_wall.h>
 #include <find_path_to_exit.h>
 
 messagebus_t bus;             //needed to
@@ -36,8 +35,7 @@ int main(void)
     proximity_start();
 	calibrate_ir();
 
-	//stars the thread for the pi regulator and to find the exit of the labyrinthe
-	pi_regulator_start();
+	//stars the thread to find the exit of the labyrinthe
 	find_path_to_exit_start();
 
 	while (1) {

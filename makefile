@@ -11,7 +11,6 @@ GLOBAL_PATH = ../../lib/e-puck2_main-processor
 #Source files to include
 CSRC += ./main.c \
 		./manage_motors.c \
-		./pi_regulator_distance_right_wall.c \
 		./find_path_to_exit.c \
 
 #Header folders to include

@@ -1,11 +1,10 @@
-#include <motors.h>
 #include <manage_motors.h>
 #include <chprintf.h>
 #include <usbcfg.h>
 
 #define NSTEP_ONE_TURN      1000 // number of step for 1 turn of the motor
-#define WHEEL_PERIMETER     13 // [cm]
 #define PI                  3.1415926536f
+
 
 //TO ADJUST IF NECESSARY. NOT ALL THE E-PUCK2 HAVE EXACTLY THE SAME WHEEL DISTANCE
 #define WHEEL_DISTANCE      5.35f    //cm
@@ -28,8 +27,8 @@ void turn_left(uint16_t angle) {
 	right_motor_set_pos(0);
 
 	//Set speeds of motor
-	left_motor_set_speed(-0.3*MOTOR_SPEED_LIMIT);
-    right_motor_set_speed(0.3*MOTOR_SPEED_LIMIT);
+	left_motor_set_speed(-DESIRED_SPEED);
+    right_motor_set_speed(DESIRED_SPEED);
 
     //Check if position is reached for the given angle and then stop motors
     int32_t left_pos = left_motor_get_pos();
@@ -60,8 +59,8 @@ void turn_right(uint16_t angle) {
 	right_motor_set_pos(0);
 
 	//Set speeds of motor
-	left_motor_set_speed(0.3*MOTOR_SPEED_LIMIT);
-    right_motor_set_speed(-0.3*MOTOR_SPEED_LIMIT);
+	left_motor_set_speed(DESIRED_SPEED);
+    right_motor_set_speed(-DESIRED_SPEED);
 
     //Check if position is reached for the given angle and then stop motors
     int32_t left_pos = left_motor_get_pos();
@@ -88,12 +87,12 @@ void turn_right(uint16_t angle) {
 void set_direction(enum direction direction) {
 	switch(direction) {
 	case forward:
-		left_motor_set_speed(0.3*MOTOR_SPEED_LIMIT);
-	    right_motor_set_speed(0.3*MOTOR_SPEED_LIMIT);
+		left_motor_set_speed(DESIRED_SPEED);
+	    right_motor_set_speed(DESIRED_SPEED);
 		break;
 	case backward:
-		left_motor_set_speed(-0.3*MOTOR_SPEED_LIMIT);
-	    right_motor_set_speed(-0.3*MOTOR_SPEED_LIMIT);
+		left_motor_set_speed(-DESIRED_SPEED);
+	    right_motor_set_speed(-DESIRED_SPEED);
 		break;
 	case left:
 		turn_left((uint16_t)90);
