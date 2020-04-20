@@ -15,15 +15,29 @@
 //semaphore
 static BSEMAPHORE_DECL(image_ready_sem, TRUE);
 
-static int counter_red = 0;
-static int counter_green = 0;
-static int counter_blue = 0;
+static int counter_red_peach = 0;
+static int counter_green_peach = 0;
+static int counter_blue_peach = 0;
+
+static int counter_red_fusee = 0;
+static int counter_green_fusee = 0;
+static int counter_blue_fusee = 0;
+
+static int counter_red_banane = 0;
+static int counter_green_banane = 0;
+static int counter_blue_banane = 0;
+
+static int counter_red_champignon = 0;
+static int counter_green_champignon = 0;
+static int counter_blue_champignon = 0;
 
 static THD_WORKING_AREA(waCaptureImage, 1024);
 static THD_FUNCTION(CaptureImage, arg) {
 
     chRegSetThreadName(__FUNCTION__);
     (void)arg;
+
+    po8030_set_awb(0);
 
 	//Takes pixels 0 to IMAGE_BUFFER_SIZE of the line 10 + 11 (minimum 2 lines because reasons)
 	po8030_advanced_config(FORMAT_RGB565, 0, 10, IMAGE_BUFFER_SIZE, 2, SUBSAMPLING_X1, SUBSAMPLING_X1);
@@ -58,9 +72,21 @@ static THD_FUNCTION(ProcessImage, arg) {
     while(1){
     	//waits until an image has been captured
         chBSemWait(&image_ready_sem);
-   		counter_red = 0;
-    		counter_green = 0;
-    		counter_blue = 0;
+   		counter_red_peach = 0;
+    		counter_green_peach = 0;
+    		counter_blue_peach = 0;
+
+    		counter_red_fusee = 0;
+    		counter_green_fusee = 0;
+    		counter_blue_fusee = 0;
+
+    		counter_red_banane = 0;
+    		counter_green_banane = 0;
+    		counter_blue_banane = 0;
+
+    		counter_red_champignon = 0;
+    		counter_green_champignon = 0;
+    		counter_blue_champignon = 0;
 		//gets the pointer to the array filled with the last image in RGB565
 		img_buff_ptr = dcmi_get_last_image_ptr();
 
@@ -76,38 +102,109 @@ static THD_FUNCTION(ProcessImage, arg) {
 
 			image_red[i/2] = ((image[i] & 0b11111000) >> 3);
 			image_blue[i/2] = (image[i+1] & 0b00011111);
-			image_green[i/2] = (image[i] & 0b00000111) + ((image[i+1] & 0b11100000) >> 2);
-			//chprintf((BaseSequentialStream *)&SDU1,"image= %d\r\n",image_red[i/2]);
-			//if(image_red[i/2] > (uint8_t)(100.0*31.0/256.0)) {
-			//	counter_red ++;
-			//}
-			/*if(image_green[i/2] > (uint8_t)(150.0*63.0/256.0) && image_green[i/2] < (uint8_t)(256.0*63.0/256.0)) {
-				counter_green ++;
-			}
-			if(image_blue[i/2] > (uint8_t)(60.0*31.0/256.0) && image_blue[i/2] < (uint8_t)(110.0*31.0/256.0)) {
-				counter_blue ++;
-			}*/
-			if(image_red[i/2] > 15) {
-				counter_red ++;
-			}
-			if(image_green[i/2] > 32) {
-				counter_green ++;
-			}
-			if(image_blue[i/2] > 15) {
-				counter_blue ++;
-			}
-		}
-		chprintf((BaseSequentialStream *)&SDU1,"counter_red = %d\r\n",counter_red);
-		chprintf((BaseSequentialStream *)&SDU1,"counter_green = %d\r\n",counter_green);
-		chprintf((BaseSequentialStream *)&SDU1,"counter_blue = %d\r\n",counter_blue);
+			image_green[i/2] = ((image[i] & 0b00000111) << 3) + ((image[i+1] & 0b11100000) >> 5);
 
-		if(counter_red > IMAGE_BUFFER_SIZE/2 && counter_green > IMAGE_BUFFER_SIZE/2 && counter_blue > IMAGE_BUFFER_SIZE/2) {
+			//Check colors for princesse peach
+			if(image_red[i/2] > 25) {
+				counter_red_peach ++;
+			}
+			if(image_green[i/2] > 12 && image_green[i/2] < 20) {
+				counter_green_peach ++;
+			}
+			if(image_blue[i/2] > 16 && image_blue[i/2] < 25) {
+				counter_blue_peach ++;
+			}
+
+			//Check colors for fusée
+			if(image_red[i/2] > 10 && image_red[i/2] < 18) {
+				counter_red_fusee ++;
+			}
+			if(image_green[i/2] > 15 && image_green[i/2] < 30) {
+				counter_green_fusee ++;
+			}
+			if(image_blue[i/2] > 14 && image_blue[i/2] < 21) {
+				counter_blue_fusee ++;
+			}
+
+			//Check colors for banane
+			if(image_red[i/2] > 10 && image_red[i/2] < 18) {
+				counter_red_banane ++;
+			}
+			if(image_green[i/2] > 15 && image_green[i/2] < 37) {
+				counter_green_banane ++;
+			}
+			if(image_blue[i/2] < 5) {
+				counter_blue_banane ++;
+			}
+
+			//Check colors for champignon
+			if(image_red[i/2] > 10 && image_red[i/2] < 17) {
+				counter_red_champignon ++;
+			}
+			if(image_green[i/2] > 17 && image_green[i/2] < 26) {
+				counter_green_champignon ++;
+			}
+			if(image_blue[i/2] > 5 && image_blue[i/2] < 25) {
+				counter_blue_champignon ++;
+			}
+
+		}
+		chprintf((BaseSequentialStream *)&SDU1,"counter_red_peach = %d\r\n",counter_red_peach);
+		chprintf((BaseSequentialStream *)&SDU1,"counter_green_peach = %d\r\n",counter_green_peach);
+		chprintf((BaseSequentialStream *)&SDU1,"counter_blue_peach = %d\r\n",counter_blue_peach);
+
+		chprintf((BaseSequentialStream *)&SDU1,"counter_red_fusee = %d\r\n",counter_red_fusee);
+		chprintf((BaseSequentialStream *)&SDU1,"counter_green_fusee = %d\r\n",counter_green_fusee);
+		chprintf((BaseSequentialStream *)&SDU1,"counter_blue_fusee = %d\r\n",counter_blue_fusee);
+
+		chprintf((BaseSequentialStream *)&SDU1,"counter_red_banane = %d\r\n",counter_red_banane);
+		chprintf((BaseSequentialStream *)&SDU1,"counter_green_banane = %d\r\n",counter_green_banane);
+		chprintf((BaseSequentialStream *)&SDU1,"counter_blue_banane = %d\r\n",counter_blue_banane);
+
+		chprintf((BaseSequentialStream *)&SDU1,"counter_red_champignon = %d\r\n",counter_red_champignon);
+		chprintf((BaseSequentialStream *)&SDU1,"counter_green_champignon = %d\r\n",counter_green_champignon);
+		chprintf((BaseSequentialStream *)&SDU1,"counter_blue_champignon = %d\r\n",counter_blue_champignon);
+
+
+		if(counter_red_peach > 100 && counter_green_peach > 100 && counter_blue_peach > 100) {
 			//ALLUMER UNE LED
 			set_body_led(1);
 			time = chVTGetSystemTime();
 			chThdSleepUntilWindowed(time, time + MS2ST(2000));
 			set_body_led(0);
+
+			DESIRED_SPEED = 0;
 		}
+
+		if(counter_red_fusee > 100 && counter_green_fusee > 100 && counter_blue_fusee > 100) {
+			//ALLUMER UNE LED
+			set_front_led(1);
+			time = chVTGetSystemTime();
+			chThdSleepUntilWindowed(time, time + MS2ST(2000));
+			set_front_led(0);
+		}
+
+		if(counter_red_champignon > 100 && counter_green_champignon > 100 && counter_blue_champignon > 100) {
+			//ALLUMER UNE LED
+			set_led(LED3, 1);
+			time = chVTGetSystemTime();
+			chThdSleepUntilWindowed(time, time + MS2ST(2000));
+			set_led(LED3, 0);
+		}
+
+
+		if(counter_red_banane > 100 && counter_green_banane > 100 && counter_blue_banane > 100) {
+			//ALLUMER UNE LED
+			set_led(LED1, 1);
+			time = chVTGetSystemTime();
+			chThdSleepUntilWindowed(time, time + MS2ST(2000));
+			set_led(LED1, 0);
+		}
+
+
+
+
+
 
     }
 }
