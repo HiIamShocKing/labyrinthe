@@ -1,40 +1,15 @@
-build/obj/find_path_to_exit.o: find_path_to_exit.c main.h \
- ../../lib/e-puck2_main-processor/src/msgbus/messagebus.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/unistd.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/unistd.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/_ansi.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/newlib.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/_newlib_version.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/config.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/ieeefp.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/features.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/cdefs.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_default_types.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/types.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_types.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_types.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/lock.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_stdint.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/endian.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_endian.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/select.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_sigset.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_timeval.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/timespec.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_timespec.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_pthreadtypes.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/sched.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/types.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h \
- ../../lib/e-puck2_main-processor/src/camera/dcmi_camera.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/stdint.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_intsup.h \
- ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/hal.h \
- ../../lib/e-puck2_main-processor/ChibiOS//os/hal/osal/rt/osal.h \
+build/obj/manage_camera.o: manage_camera.c manage_camera.h \
  ../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/ch.h \
  ../../lib/e-puck2_main-processor/ChibiOS//os/rt/ports/ARMCMx/compilers/GCC/chtypes.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/stdint.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_default_types.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/features.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/_newlib_version.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_intsup.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_stdint.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h \
  chconf.h \
  ../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/chlicense.h \
  ../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/chsystypes.h \
@@ -70,6 +45,8 @@ build/obj/find_path_to_exit.o: find_path_to_exit.c main.h \
  ../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/chdynamic.h \
  ../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/chqueues.h \
  ../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/chstreams.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/hal.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/osal/rt/osal.h \
  halconf.h mcuconf.h \
  ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/STM32F4xx/hal_lld.h \
  ../../lib/e-puck2_main-processor/ChibiOS//os/hal/ports/STM32/STM32F4xx/stm32_registry.h \
@@ -122,6 +99,32 @@ build/obj/find_path_to_exit.o: find_path_to_exit.c main.h \
  ../../lib/e-puck2_main-processor/ChibiOS_ext/os/hal/ports/STM32/STM32F4xx/stm32_registry.h \
  ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/mmc_spi.h \
  ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/serial_usb.h \
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/lib/streams/chprintf.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h \
+ ../../lib/e-puck2_main-processor/src/usbcfg.h main.h \
+ ../../lib/e-puck2_main-processor/src/msgbus/messagebus.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/unistd.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/unistd.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/_ansi.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/newlib.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/config.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/ieeefp.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/cdefs.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/types.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_types.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_types.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/lock.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/endian.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_endian.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/select.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_sigset.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_timeval.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/timespec.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_timespec.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_pthreadtypes.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/sched.h \
+ /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/types.h \
+ ../../lib/e-puck2_main-processor/src/camera/dcmi_camera.h \
  ../../lib/e-puck2_main-processor/ChibiOS_ext/os/hal/include/dcmi.h \
  ../../lib/e-puck2_main-processor/ChibiOS_ext/os/hal/include/../ports/STM32/STM32F4xx/dcmi_lld.h \
  ../../lib/e-puck2_main-processor/ChibiOS_ext/os/hal/include/../ports/STM32/STM32F4xx/stm32_registry.h \
@@ -129,89 +132,35 @@ build/obj/find_path_to_exit.o: find_path_to_exit.c main.h \
  ../../lib/e-puck2_main-processor/src/camera/po8030.h \
  ../../lib/e-puck2_main-processor/src/audio/play_melody.h \
  ../../lib/e-puck2_main-processor/src/audio/audio_thread.h \
- find_path_to_exit.h manage_motors.h \
+ ../../lib/e-puck2_main-processor/src/camera/po8030.h manage_motors.h \
  ../../lib/e-puck2_main-processor/src/motors.h \
+ ../../lib/e-puck2_main-processor/src/leds.h \
  ../../lib/e-puck2_main-processor/src/sensors/proximity.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/math.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/reent.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/_ansi.h \
- ../../lib/e-puck2_main-processor/ChibiOS//os/hal/lib/streams/chprintf.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h \
- ../../lib/e-puck2_main-processor/src/usbcfg.h
+ find_path_to_exit.h
 
-main.h:
+manage_camera.h:
 
-../../lib/e-puck2_main-processor/src/msgbus/messagebus.h:
+../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/ch.h:
 
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/unistd.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/unistd.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/_ansi.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/newlib.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/_newlib_version.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/config.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/ieeefp.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/features.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/cdefs.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_default_types.h:
+../../lib/e-puck2_main-processor/ChibiOS//os/rt/ports/ARMCMx/compilers/GCC/chtypes.h:
 
 /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/stddef.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/types.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_types.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_types.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/lock.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_stdint.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/endian.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_endian.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/select.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_sigset.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_timeval.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/timespec.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_timespec.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_pthreadtypes.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/sched.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/types.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h:
-
-../../lib/e-puck2_main-processor/src/camera/dcmi_camera.h:
 
 /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/stdint.h:
 
 /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/stdint.h:
 
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_default_types.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/features.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/_newlib_version.h:
+
 /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_intsup.h:
 
-../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/hal.h:
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_stdint.h:
 
-../../lib/e-puck2_main-processor/ChibiOS//os/hal/osal/rt/osal.h:
-
-../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/ch.h:
-
-../../lib/e-puck2_main-processor/ChibiOS//os/rt/ports/ARMCMx/compilers/GCC/chtypes.h:
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/stdbool.h:
 
 chconf.h:
 
@@ -282,6 +231,10 @@ chconf.h:
 ../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/chqueues.h:
 
 ../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/chstreams.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/hal.h:
+
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/osal/rt/osal.h:
 
 halconf.h:
 
@@ -389,6 +342,60 @@ mcuconf.h:
 
 ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/serial_usb.h:
 
+../../lib/e-puck2_main-processor/ChibiOS//os/hal/lib/streams/chprintf.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h:
+
+../../lib/e-puck2_main-processor/src/usbcfg.h:
+
+main.h:
+
+../../lib/e-puck2_main-processor/src/msgbus/messagebus.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/unistd.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/unistd.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/_ansi.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/newlib.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/config.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/ieeefp.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/cdefs.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/types.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_types.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_types.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/lock.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/endian.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/_endian.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/select.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_sigset.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_timeval.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/timespec.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_timespec.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/_pthreadtypes.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/sched.h:
+
+/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/types.h:
+
+../../lib/e-puck2_main-processor/src/camera/dcmi_camera.h:
+
 ../../lib/e-puck2_main-processor/ChibiOS_ext/os/hal/include/dcmi.h:
 
 ../../lib/e-puck2_main-processor/ChibiOS_ext/os/hal/include/../ports/STM32/STM32F4xx/dcmi_lld.h:
@@ -403,22 +410,14 @@ mcuconf.h:
 
 ../../lib/e-puck2_main-processor/src/audio/audio_thread.h:
 
-find_path_to_exit.h:
+../../lib/e-puck2_main-processor/src/camera/po8030.h:
 
 manage_motors.h:
 
 ../../lib/e-puck2_main-processor/src/motors.h:
 
+../../lib/e-puck2_main-processor/src/leds.h:
+
 ../../lib/e-puck2_main-processor/src/sensors/proximity.h:
 
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/math.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/reent.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/_ansi.h:
-
-../../lib/e-puck2_main-processor/ChibiOS//os/hal/lib/streams/chprintf.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h:
-
-../../lib/e-puck2_main-processor/src/usbcfg.h:
+find_path_to_exit.h:

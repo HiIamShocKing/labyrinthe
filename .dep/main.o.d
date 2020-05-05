@@ -128,18 +128,15 @@ build/obj/main.o: main.c \
  ../../lib/e-puck2_main-processor/ChibiOS_ext/os/hal/include/../ports/STM32/STM32F4xx/stm32_registry.h \
  ../../lib/e-puck2_main-processor/ChibiOS_ext/os/hal/include/../ports/STM32/STM32F4xx/stm32_rcc.h \
  ../../lib/e-puck2_main-processor/src/camera/po8030.h \
- ../../lib/e-puck2_main-processor/src/parameter/parameter.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/stdlib.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/_ansi.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/reent.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/stdlib.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/alloca.h \
+ ../../lib/e-puck2_main-processor/src/audio/play_melody.h \
+ ../../lib/e-puck2_main-processor/src/audio/audio_thread.h \
  ../../lib/e-puck2_main-processor/src/sensors/proximity.h \
+ ../../lib/e-puck2_main-processor/src/motors.h \
+ ../../lib/e-puck2_main-processor/src/leds.h find_path_to_exit.h \
+ ../../lib/e-puck2_main-processor/src/spi_comm.h \
  ../../lib/e-puck2_main-processor/ChibiOS//os/hal/lib/streams/chprintf.h \
  /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h \
- ../../lib/e-puck2_main-processor/src/usbcfg.h \
- ../../lib/e-puck2_main-processor/src/motors.h manage_motors.h \
- find_path_to_exit.h process_image.h
+ ../../lib/e-puck2_main-processor/src/usbcfg.h manage_camera.h
 
 ../../lib/e-puck2_main-processor/ChibiOS//os/rt/include/ch.h:
 
@@ -403,19 +400,19 @@ main.h:
 
 ../../lib/e-puck2_main-processor/src/camera/po8030.h:
 
-../../lib/e-puck2_main-processor/src/parameter/parameter.h:
+../../lib/e-puck2_main-processor/src/audio/play_melody.h:
 
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/stdlib.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/_ansi.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/sys/reent.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/machine/stdlib.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/arm-none-eabi/include/alloca.h:
+../../lib/e-puck2_main-processor/src/audio/audio_thread.h:
 
 ../../lib/e-puck2_main-processor/src/sensors/proximity.h:
+
+../../lib/e-puck2_main-processor/src/motors.h:
+
+../../lib/e-puck2_main-processor/src/leds.h:
+
+find_path_to_exit.h:
+
+../../lib/e-puck2_main-processor/src/spi_comm.h:
 
 ../../lib/e-puck2_main-processor/ChibiOS//os/hal/lib/streams/chprintf.h:
 
@@ -423,10 +420,4 @@ main.h:
 
 ../../lib/e-puck2_main-processor/src/usbcfg.h:
 
-../../lib/e-puck2_main-processor/src/motors.h:
-
-manage_motors.h:
-
-find_path_to_exit.h:
-
-process_image.h:
+manage_camera.h:
