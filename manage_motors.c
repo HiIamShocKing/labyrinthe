@@ -1,7 +1,7 @@
 #include <manage_motors.h>
 
-#include <chprintf.h>
-#include <usbcfg.h>
+//#include <chprintf.h>
+//#include <usbcfg.h>
 
 static int desired_speed = (int)(0.3 * (float)MOTOR_SPEED_LIMIT);
 

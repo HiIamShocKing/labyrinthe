@@ -10,8 +10,8 @@
 #include <spi_comm.h>
 
 
-#include <chprintf.h> //needed for
-#include <usbcfg.h>	 //the chprintf fonction
+//#include <chprintf.h> //needed for
+//#include <usbcfg.h>	 //the chprintf fonction
 #include "manage_camera.h"
 
 //needed to be able to use proximity sensors

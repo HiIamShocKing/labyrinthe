@@ -99,10 +99,7 @@ build/obj/manage_motors.o: manage_motors.c manage_motors.h \
  mcuconf.h \
  ../../lib/e-puck2_main-processor/ChibiOS_ext/os/hal/ports/STM32/STM32F4xx/stm32_registry.h \
  ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/mmc_spi.h \
- ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/serial_usb.h \
- ../../lib/e-puck2_main-processor/ChibiOS//os/hal/lib/streams/chprintf.h \
- /Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h \
- ../../lib/e-puck2_main-processor/src/usbcfg.h
+ ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/serial_usb.h
 
 manage_motors.h:
 
@@ -309,9 +306,3 @@ mcuconf.h:
 ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/mmc_spi.h:
 
 ../../lib/e-puck2_main-processor/ChibiOS//os/hal/include/serial_usb.h:
-
-../../lib/e-puck2_main-processor/ChibiOS//os/hal/lib/streams/chprintf.h:
-
-/Applications/Eclipse_e-puck2.app/Contents/Eclipse_e-puck2/Tools/gcc-arm-none-eabi-7-2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include/stdarg.h:
-
-../../lib/e-puck2_main-processor/src/usbcfg.h:

@@ -2,8 +2,8 @@
 
 #include "ch.h"
 #include "hal.h"
-#include <chprintf.h>
-#include <usbcfg.h>
+//#include <chprintf.h>
+//#include <usbcfg.h>
 
 #include <main.h>
 #include <camera/po8030.h>
@@ -113,33 +113,19 @@ void manage_robot(void){
 			mean_blue >= 3 && mean_blue <= 5)) {
 			set_see_red(true);
 			set_led_color(pink);
-			/*set_led(LED1, 1);
-			set_led(LED3, 0);
-			set_led(LED5, 0);
-			set_led(LED7, 0);*/
 			//playMelody(WE_ARE_THE_CHAMPIONS, ML_FORCE_CHANGE, NULL);
 		} else if(mean_red >= 5 && mean_red <= 7 &&
 				mean_green >= 17 && mean_green <= 19 &&
 				mean_blue >= 9 && mean_blue <= 11) {
 			//playMelody(MARIO_DEATH, ML_FORCE_CHANGE, NULL);
-			//if(get_prox(FRONT_RIGHT17) > 150 && get_is_turning() == false && see_white == false){
 			set_see_white(true);
 			set_led_color(white);
-				/*set_led(LED1, 0);
-				set_led(LED3, 0);
-				set_led(LED5, 1);
-				set_led(LED7, 0);*/
-			//}
 		} else if(mean_red >= 1 && mean_red <= 3 &&
 				mean_green >= 9 && mean_green <= 12 &&
 				mean_blue >= 8 && mean_blue <= 10){
 			//playMelody(MARIO_FLAG, ML_FORCE_CHANGE, NULL);
 			set_toggle_period_rgb_led(fast);
 			set_led_color(blue);
-			/*set_led(LED1, 0);
-			set_led(LED3, 0);
-			set_led(LED5, 0);
-			set_led(LED7, 1);*/
 			set_desired_speed((int)(0.4 * (float)MOTOR_SPEED_LIMIT));
 		}else if (mean_red >= 3 && mean_red <= 6 &&
 				mean_green >= 18 && mean_green <= 21 &&
@@ -147,10 +133,6 @@ void manage_robot(void){
 			//playMelody(MARIO_FLAG, ML_FORCE_CHANGE, NULL);
 			set_toggle_period_rgb_led(slow);
 			set_led_color(green);
-			/*set_led(LED1, 0);
-			set_led(LED3, 1);
-			set_led(LED5, 0);
-			set_led(LED7, 0);*/
 			set_desired_speed((int)(0.2 * (float)MOTOR_SPEED_LIMIT));
 		}
 	}
@@ -193,9 +175,9 @@ static THD_FUNCTION(ManageCamera, arg) {
     		process_image();
     		manage_robot();
 
-		chprintf((BaseSequentialStream *)&SD3,"mean_red = %d\r\n",mean_red);
-		chprintf((BaseSequentialStream *)&SD3,"mean_green = %d\r\n",mean_green);
-		chprintf((BaseSequentialStream *)&SD3,"mean_blue = %d\r\n",mean_blue);
+		//chprintf((BaseSequentialStream *)&SD3,"mean_red = %d\r\n",mean_red);
+		//chprintf((BaseSequentialStream *)&SD3,"mean_green = %d\r\n",mean_green);
+		//chprintf((BaseSequentialStream *)&SD3,"mean_blue = %d\r\n",mean_blue);
 
     }
 }

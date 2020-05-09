@@ -8,8 +8,8 @@
 #include <stdbool.h>
 #include <manage_camera.h>
 
-#include <chprintf.h> //needed for the
-#include <usbcfg.h>	 //chprintf
+//#include <chprintf.h> //needed for the
+//#include <usbcfg.h>	 //chprintf
 
 static systime_t time;
 static uint16_t distance_corrected_backward = 0;
@@ -27,7 +27,6 @@ bool get_front_wall(void){
 void set_front_wall(bool boolean){
 	front_wall = boolean;
 }
-
 
 /**
 * @brief   PI regulator that checks if the robot is too far or too close of his right wall
@@ -261,6 +260,7 @@ static THD_FUNCTION(FindPathToExit, arg) {
     (void)arg;
 
     systime_t time;
+    set_direction(forward);
 
     while(1){
     		//robot detect princess peach so that it means he got out of the labyrinth
