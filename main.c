@@ -19,18 +19,16 @@ messagebus_t bus;
 MUTEX_DECL(bus_lock);
 CONDVAR_DECL(bus_condvar);
 
-//GLOBAL VARIABLE
-static bool detect_peach = false;
 static toggle_speed toggle_period_rgb_led = normal;
-static rgb_led_color led_color = green;
-static bool is_turning = false;
+static rgb_led_color led_color = yellow;
+static bool leds_on = true;
 
-bool get_detect_peach(void){
-	return detect_peach;
+bool get_leds_statue(void){
+	return leds_on;
 }
 
-void set_detect_peach(bool boolean){
-	detect_peach = boolean;
+void set_leds_statue(bool boolean){
+	leds_on = boolean;
 }
 
 toggle_speed get_toggle_period_rgb_led(void){
@@ -49,13 +47,6 @@ void set_led_color(rgb_led_color color){
 	led_color = color;
 }
 
-bool get_is_turning(void){
-	return is_turning;
-}
-
-void set_is_turning(bool boolean){
-	is_turning = boolean;
-}
 
 void turn_on_led(void){
 	switch(get_led_color()){
@@ -118,6 +109,7 @@ void toggle_led(void){
 	chThdSleepMilliseconds(get_toggle_period_rgb_led());
 }
 
+
 int main(void)
 {
 	//OBLIGATION
@@ -125,7 +117,7 @@ int main(void)
     chSysInit();
     mpu_init();
 
-    //serial_start();
+    serial_start();
 
     //start the USB communication
     usb_start();
@@ -162,7 +154,13 @@ int main(void)
 	manage_camera_start();
 
 	while (1) {
-		toggle_led();
+		if(get_leds_statue() == true){
+			toggle_led();
+			chThdSleepMilliseconds(get_toggle_period_rgb_led());
+		} else {
+			turn_off_led();
+			chThdSleepMilliseconds(get_toggle_period_rgb_led());
+		}
 	}
 }
 

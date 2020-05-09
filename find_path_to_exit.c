@@ -6,6 +6,7 @@
 #include <sensors/proximity.h>
 #include <math.h>
 #include <stdbool.h>
+#include <manage_camera.h>
 
 #include <chprintf.h> //needed for the
 #include <usbcfg.h>	 //chprintf
@@ -17,11 +18,16 @@ static uint8_t counter_pi_frequence = 0;
 static uint8_t counter_pi_frequence_to_reach = 1;
 static bool pi_regulator_is_on = true;
 static bool go_backward = false;
+static bool front_wall = false;
 
-extern int desired_speed;
-//extern bool detect_peach;
-//extern toggle_speed toggle_period_rgb_led;
-//extern bool is_turning;
+bool get_front_wall(void){
+	return front_wall;
+}
+
+void set_front_wall(bool boolean){
+	front_wall = boolean;
+}
+
 
 /**
 * @brief   PI regulator that checks if the robot is too far or too close of his right wall
@@ -102,10 +108,8 @@ void backward_correction(void){
 */
 void turn_right_after_backward_correction(void){
 	//The robot has to turn immediately and then go forward
-	set_is_turning(true);
 	turn_right((uint16_t)90);
 	set_direction(forward);
-	set_is_turning(false);
 }
 
 /**
@@ -132,7 +136,30 @@ void check_for_path(void) {
 			  //d = LABIRYNTHE_CELL_SIZE/2.0 [cm] which is the half of the width of the path
 			  //v is given by desired_speed[steps/s] converted to [cm/s]
 	uint16_t time_to_wait_after_turned = (uint16_t)(1.1 * 1000.0 * (LABIRYNTHE_CELL_SIZE/2.0)/
-			((float)(desired_speed) * (float)(WHEEL_PERIMETER) / (float)(NUMBER_STEPS_FOR_ONE_TURN)));
+			((float)(get_desired_speed()) * (float)(WHEEL_PERIMETER) / (float)(NUMBER_STEPS_FOR_ONE_TURN)));
+
+
+	//Check if there is a front wall to ask camera to analyse image and put lights off
+	if(forward_distance > DISTANCE_DESCRIBING_FORWARD_WALL){
+		set_leds_statue(false);
+		turn_off_led();
+		set_front_wall(true);
+		stop_motors();
+		time = chVTGetSystemTime();
+		chThdSleepUntilWindowed(time, time + MS2ST(1000));
+		set_front_wall(false);
+		set_leds_statue(true);
+
+		if(get_see_white() == true) {
+			reset_counters_backwarding();
+			turn_right((uint16_t)180);
+			set_direction(forward);
+			set_see_white(false);
+			return;
+		} else if(get_see_red() == true){
+			return;
+		}
+	}
 
 	/*Global Logic to solve the labyrinthe : always turn to right if possible.
 	 *
@@ -155,14 +182,12 @@ void check_for_path(void) {
 			reset_counters_backwarding();
 			go_backward = false;
 		}
-	} else if(right_distance < DISTANCE_DESCRIBING_NO_RIGHT_WALL && forward_distance > DISTANCE_DESCRIBING_FORWARD_WALL){
+	} else if(right_distance < DISTANCE_DESCRIBING_RIGHT_WALL && forward_distance > DISTANCE_DESCRIBING_FORWARD_WALL){
 		reset_counters_backwarding();
 
 		//The robot has to turn immediately and then go forward
-		set_is_turning(true);
 		turn_right((uint16_t)90);
 		set_direction(forward);
-		set_is_turning(false);
 
 		wait_after_turned(time_to_wait_after_turned);
 
@@ -170,34 +195,30 @@ void check_for_path(void) {
 		 * we managed to turn to the right with backwarding
 		 * but we did it without backwarding*/
 		pi_regulator_is_on = true;
-	} else if(right_distance < DISTANCE_DESCRIBING_NO_RIGHT_WALL && forward_distance < DISTANCE_DESCRIBING_FORWARD_WALL){
+	} else if(right_distance < DISTANCE_DESCRIBING_RIGHT_WALL && forward_distance < DISTANCE_DESCRIBING_FORWARD_WALL){
 		//Need to disable the pi_regulator because we manage to turn to the right
 		pi_regulator_is_on = false;
 
 		//There is no right wall so compute thickness of the right path
 		right_path_thickness ++;
-	} else if(right_distance > DISTANCE_DESCRIBING_NO_RIGHT_WALL && forward_distance < DISTANCE_DESCRIBING_FORWARD_WALL) {
+	} else if(right_distance > DISTANCE_DESCRIBING_RIGHT_WALL && forward_distance < DISTANCE_DESCRIBING_FORWARD_WALL) {
 		if(right_path_thickness > THRESHOLD_RIGHT_WALL_THICKNESS){
 			go_backward = true;
 		}
-	} else if(right_distance > DISTANCE_DESCRIBING_NO_RIGHT_WALL && forward_distance > DISTANCE_DESCRIBING_FORWARD_WALL && left_distance < DISTANCE_DESCRIBING_LEFT_WALL) {
+	} else if(right_distance > DISTANCE_DESCRIBING_RIGHT_WALL && forward_distance > DISTANCE_DESCRIBING_FORWARD_WALL && left_distance < DISTANCE_DESCRIBING_LEFT_WALL) {
 		reset_counters_backwarding();
 
 		//The robot has to turn immediately and then go forward
-		set_is_turning(true);
 		turn_left((uint16_t)90);
 		set_direction(forward);
-		set_is_turning(false);
 
 		wait_after_turned(time_to_wait_after_turned);
-	} else {
+	} else if(right_distance > DISTANCE_DESCRIBING_RIGHT_WALL && forward_distance > DISTANCE_DESCRIBING_FORWARD_WALL && left_distance > DISTANCE_DESCRIBING_LEFT_WALL){
 		reset_counters_backwarding();
 
 		//The robot has to turn around immediately and then go forward
-		set_is_turning(true);
 		turn_left((uint16_t)180);
 		set_direction(forward);
-		set_is_turning(false);
 
 		wait_after_turned(time_to_wait_after_turned);
 	}
@@ -209,7 +230,8 @@ void check_for_path(void) {
 void determine_pi_frequency(void){
     switch(get_toggle_period_rgb_led()){
     case(normal):
-    		//frequency for pi regulator should be 2hz = 20hz/10 so we want the counter to be 10
+
+    			//counter = frequence thread / frequence souhaitée
     		if(counter_pi_frequence_to_reach != FREQUENCY_THREAD_FIND_PATH_TO_EXIT/2){
     			counter_pi_frequence = 0;
     			counter_pi_frequence_to_reach = FREQUENCY_THREAD_FIND_PATH_TO_EXIT/2;
@@ -243,7 +265,7 @@ static THD_FUNCTION(FindPathToExit, arg) {
     while(1){
     		//robot detect princess peach so that it means he got out of the labyrinth
     		//so we disable this thread
-    		if(get_detect_peach() == true){
+    		if(get_see_red() == true){
     			while(1){
     				chThdSleepMilliseconds(PERIOD_SLEEP_THREAD_FIND_PATH_TO_EXIT);
     			}
@@ -273,5 +295,5 @@ static THD_FUNCTION(FindPathToExit, arg) {
 }
 
 void find_path_to_exit_start(void){
-	chThdCreateStatic(waFindPathToExit, sizeof(waFindPathToExit), NORMALPRIO - 1, FindPathToExit, NULL);
+	chThdCreateStatic(waFindPathToExit, sizeof(waFindPathToExit), NORMALPRIO, FindPathToExit, NULL);
 }

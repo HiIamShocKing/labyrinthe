@@ -34,4 +34,7 @@ rgb_led_color get_led_color(void);
 void set_led_color(rgb_led_color color);
 bool get_is_turning(void);
 void set_is_turning(bool boolean);
+void turn_off_led(void);
+bool get_leds_statue(void);
+void set_leds_statue(bool boolean);
 

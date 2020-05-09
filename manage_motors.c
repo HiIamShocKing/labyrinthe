@@ -3,8 +3,15 @@
 #include <chprintf.h>
 #include <usbcfg.h>
 
-//GLOBAL VARIABLE
-int desired_speed = (int)(0.3 * (float)MOTOR_SPEED_LIMIT);
+static int desired_speed = (int)(0.3 * (float)MOTOR_SPEED_LIMIT);
+
+int get_desired_speed(void){
+	return desired_speed;
+}
+
+void set_desired_speed(int value){
+	desired_speed = value;
+}
 
 /**
 * @brief   Turn the robot to the left of a given angle in degrees >= 0

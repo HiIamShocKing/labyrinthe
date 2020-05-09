@@ -15,3 +15,5 @@ void set_direction(direction direction);
 void turn_left(uint16_t angle);
 void turn_right(uint16_t angle);
 void stop_motors(void);
+int get_desired_speed(void);
+void set_desired_speed(int value);
