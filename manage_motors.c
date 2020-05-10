@@ -1,9 +1,10 @@
 #include <manage_motors.h>
+#include <main.h>
 
-//#include <chprintf.h>
-//#include <usbcfg.h>
+#define COMPLETE_TURN	360.0
+#define NORMAL_SPEED_COEFF	0.3
 
-static int desired_speed = (int)(0.3 * (float)MOTOR_SPEED_LIMIT);
+static int desired_speed = (int)(NORMAL_SPEED_COEFF * (float)MOTOR_SPEED_LIMIT);
 
 int get_desired_speed(void){
 	return desired_speed;
@@ -35,8 +36,10 @@ void turn_left(uint16_t angle) {
     //Check if position is reached for the given angle and then stop motors
     int32_t left_pos = left_motor_get_pos();
     int32_t right_pos = right_motor_get_pos();
-    int32_t pos_to_reach_left = (int32_t)((float)angle/360.0 * PERIMETER_EPUCK * (float)NUMBER_STEPS_FOR_ONE_TURN / (float)WHEEL_PERIMETER);
-    int32_t pos_to_reach_right = (int32_t)((float)angle/360.0 * PERIMETER_EPUCK * (float)NUMBER_STEPS_FOR_ONE_TURN / (float)WHEEL_PERIMETER);
+    int32_t pos_to_reach_left = (int32_t)((float)angle/COMPLETE_TURN * PERIMETER_EPUCK *
+    										(float)NUMBER_STEPS_FOR_ONE_TURN / (float)WHEEL_PERIMETER);
+    int32_t pos_to_reach_right = (int32_t)((float)angle/COMPLETE_TURN* PERIMETER_EPUCK *
+    										(float)NUMBER_STEPS_FOR_ONE_TURN / (float)WHEEL_PERIMETER);
     while (left_pos < pos_to_reach_left && right_pos < pos_to_reach_right) {
     		left_pos = left_motor_get_pos();
     		right_pos = right_motor_get_pos();
@@ -67,8 +70,10 @@ void turn_right(uint16_t angle) {
     //Check if position is reached for the given angle and then stop motors
     int32_t left_pos = left_motor_get_pos();
     int32_t right_pos = right_motor_get_pos();
-    int32_t pos_to_reach_left = (int32_t)((float)angle/360.0 * PERIMETER_EPUCK* (float)NUMBER_STEPS_FOR_ONE_TURN / (float)WHEEL_PERIMETER);
-    int32_t pos_to_reach_right = (int32_t)((float)angle/360.0 * PERIMETER_EPUCK * (float)NUMBER_STEPS_FOR_ONE_TURN / (float)WHEEL_PERIMETER);
+    int32_t pos_to_reach_left = (int32_t)((float)angle/COMPLETE_TURN * PERIMETER_EPUCK *
+    										(float)NUMBER_STEPS_FOR_ONE_TURN / (float)WHEEL_PERIMETER);
+    int32_t pos_to_reach_right = (int32_t)((float)angle/COMPLETE_TURN * PERIMETER_EPUCK *
+    										(float)NUMBER_STEPS_FOR_ONE_TURN / (float)WHEEL_PERIMETER);
     while (left_pos < pos_to_reach_left && right_pos < pos_to_reach_right) {
     		left_pos = left_motor_get_pos();
     		right_pos = right_motor_get_pos();
@@ -97,10 +102,10 @@ void set_direction(direction direction) {
 	    right_motor_set_speed(-desired_speed);
 		break;
 	case left:
-		turn_left((uint16_t)90);
+		turn_left(QUARTER_TURN);
 		break;
 	case right:
-		turn_right((uint16_t)90);
+		turn_right(QUARTER_TURN);
 		break;
 	}
 }

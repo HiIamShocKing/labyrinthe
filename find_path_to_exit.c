@@ -1,5 +1,3 @@
-//#include "ch.h"
-//#include "hal.h"
 #include <main.h>
 #include <find_path_to_exit.h>
 #include <manage_motors.h>
@@ -7,9 +5,6 @@
 #include <math.h>
 #include <stdbool.h>
 #include <manage_camera.h>
-
-//#include <chprintf.h> //needed for the
-//#include <usbcfg.h>	 //chprintf
 
 static systime_t time;
 static uint16_t distance_corrected_backward = 0;
@@ -19,6 +14,8 @@ static uint8_t counter_pi_frequence_to_reach = 1;
 static bool pi_regulator_is_on = true;
 static bool go_backward = false;
 static bool front_wall = false;
+
+#define SLEEP_TIME_TO_ANALYSE_IMAGE	1000
 
 bool get_front_wall(void){
 	return front_wall;
@@ -107,7 +104,7 @@ void backward_correction(void){
 */
 void turn_right_after_backward_correction(void){
 	//The robot has to turn immediately and then go forward
-	turn_right((uint16_t)90);
+	turn_right(QUARTER_TURN);
 	set_direction(forward);
 }
 
@@ -145,13 +142,13 @@ void check_for_path(void) {
 		set_front_wall(true);
 		stop_motors();
 		time = chVTGetSystemTime();
-		chThdSleepUntilWindowed(time, time + MS2ST(1000));
+		chThdSleepUntilWindowed(time, time + MS2ST(SLEEP_TIME_TO_ANALYSE_IMAGE));
 		set_front_wall(false);
 		set_leds_statue(true);
 
 		if(get_see_white() == true) {
 			reset_counters_backwarding();
-			turn_right((uint16_t)180);
+			turn_right(HALF_TURN);
 			set_direction(forward);
 			set_see_white(false);
 			return;
@@ -185,7 +182,7 @@ void check_for_path(void) {
 		reset_counters_backwarding();
 
 		//The robot has to turn immediately and then go forward
-		turn_right((uint16_t)90);
+		turn_right(QUARTER_TURN);
 		set_direction(forward);
 
 		wait_after_turned(time_to_wait_after_turned);
@@ -204,19 +201,21 @@ void check_for_path(void) {
 		if(right_path_thickness > THRESHOLD_RIGHT_WALL_THICKNESS){
 			go_backward = true;
 		}
-	} else if(right_distance > DISTANCE_DESCRIBING_RIGHT_WALL && forward_distance > DISTANCE_DESCRIBING_FORWARD_WALL && left_distance < DISTANCE_DESCRIBING_LEFT_WALL) {
+	} else if(right_distance > DISTANCE_DESCRIBING_RIGHT_WALL && forward_distance > DISTANCE_DESCRIBING_FORWARD_WALL &&
+			left_distance < DISTANCE_DESCRIBING_LEFT_WALL) {
 		reset_counters_backwarding();
 
 		//The robot has to turn immediately and then go forward
-		turn_left((uint16_t)90);
+		turn_left(QUARTER_TURN);
 		set_direction(forward);
 
 		wait_after_turned(time_to_wait_after_turned);
-	} else if(right_distance > DISTANCE_DESCRIBING_RIGHT_WALL && forward_distance > DISTANCE_DESCRIBING_FORWARD_WALL && left_distance > DISTANCE_DESCRIBING_LEFT_WALL){
+	} else if(right_distance > DISTANCE_DESCRIBING_RIGHT_WALL && forward_distance > DISTANCE_DESCRIBING_FORWARD_WALL &&
+			left_distance > DISTANCE_DESCRIBING_LEFT_WALL){
 		reset_counters_backwarding();
 
 		//The robot has to turn around immediately and then go forward
-		turn_left((uint16_t)180);
+		turn_left(HALF_TURN);
 		set_direction(forward);
 
 		wait_after_turned(time_to_wait_after_turned);
@@ -227,10 +226,10 @@ void check_for_path(void) {
 * @brief   Determine counter_pi_frequency to reach
 */
 void determine_pi_frequency(void){
+	//counter = thread_frequency / desired_frequency
     switch(get_toggle_period_rgb_led()){
     case(normal):
-
-    			//counter = frequence thread / frequence souhaitée
+		//frequency for pi regulator should be 10hz = 20hz/2 so we want the counter to be 2
     		if(counter_pi_frequence_to_reach != FREQUENCY_THREAD_FIND_PATH_TO_EXIT/2){
     			counter_pi_frequence = 0;
     			counter_pi_frequence_to_reach = FREQUENCY_THREAD_FIND_PATH_TO_EXIT/2;

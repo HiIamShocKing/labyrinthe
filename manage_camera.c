@@ -2,8 +2,6 @@
 
 #include "ch.h"
 #include "hal.h"
-//#include <chprintf.h>
-//#include <usbcfg.h>
 
 #include <main.h>
 #include <camera/po8030.h>
@@ -13,7 +11,42 @@
 #include <sensors/proximity.h>
 #include <find_path_to_exit.h>
 
-#define IMAGE_BUFFER_SIZE		640
+
+#define IMAGE_BUFFER_SIZE	640
+
+#define MEAN_RED_MIN_PINK	4
+#define MEAN_RED_MAX_PINK 	6
+#define MEAN_GREEN_MIN_PINK 	5
+#define MEAN_GREEN_MAX_PINK 	7
+#define MEAN_BLUE_MIN_PINK	3
+#define MEAN_BLUE_MAX_PINK	5
+
+#define MEAN_RED_MIN_WHITE	5
+#define MEAN_RED_MAX_WHITE	7
+#define MEAN_GREEN_MIN_WHITE 17
+#define MEAN_GREEN_MAX_WHITE 19
+#define MEAN_BLUE_MIN_WHITE	9
+#define MEAN_BLUE_MAX_WHITE	11
+
+#define MEAN_RED_MIN_BLUE	1
+#define MEAN_RED_MAX_BLUE	3
+#define MEAN_GREEN_MIN_BLUE	9
+#define MEAN_GREEN_MAX_BLUE	12
+#define MEAN_BLUE_MIN_BLUE	7
+#define MEAN_BLUE_MAX_BLUE	9
+
+#define MEAN_RED_MIN_GREEN	2
+#define MEAN_RED_MAX_GREEN	5
+#define MEAN_GREEN_MIN_GREEN	14
+#define MEAN_GREEN_MAX_GREEN	17
+#define MEAN_BLUE_MIN_GREEN	5
+#define MEAN_BLUE_MAX_GREEN	7
+
+#define FAST_SPEED_COEFF			0.4
+#define SUPER_FAST_SPEED_COEFF	0.6
+#define SLOW_SPEED_COEFF			0.2
+
+#define DANSE_NUMBER	2
 
 //semaphore
 static BSEMAPHORE_DECL(image_ready_sem, TRUE);
@@ -47,22 +80,27 @@ void set_see_red(bool boolean){
 }
 
 void dance(void){
-	set_desired_speed((int)(0.6 * (float)MOTOR_SPEED_LIMIT));
+	set_desired_speed((int)(SUPER_FAST_SPEED_COEFF * (float)MOTOR_SPEED_LIMIT));
 
 	if(counter_dance == 0){
-		turn_left(90);
-		turn_right(180);
-	} else if (counter_dance == 2) {
-		turn_left(180);
-		turn_right(90);
+		turn_left(QUARTER_TURN);
+		turn_right(HALF_TURN);
+	} else if (counter_dance == DANSE_NUMBER) {
+		turn_left(HALF_TURN);
+		turn_right(QUARTER_TURN);
 	} else {
-		turn_left(180);
-		turn_right(180);
+		turn_left(HALF_TURN);
+		turn_right(HALF_TURN);
 	}
 
 	counter_dance++;
 }
 
+/**
+* @brief   Analyse the image and manage 3 arrays of colors (RGB),
+* 		   then do an average of each one : mean_red, mean_green, mean_blue (static variables)
+*
+*/
 void process_image(void){
 	//waits until an image has been captured
     chBSemWait(&image_ready_sem);
@@ -99,41 +137,45 @@ void process_image(void){
 	mean_blue /= IMAGE_BUFFER_SIZE;
 }
 
+/**
+* @brief   change robot's behavior by looking at the mean_red, mean_green, mean_blue (static variables)
+*
+*/
 void manage_robot(void){
 	if(get_see_red() == true){
-		if(counter_dance <= 2){
+		if(counter_dance <= DANSE_NUMBER){
 			dance();
 		} else {
 			set_desired_speed(0);
 		}
 	}
 	else if(get_front_wall() == true){
-		if((mean_red >= 4 && mean_red <= 6 &&
-			mean_green >= 5 && mean_green <= 7 &&
-			mean_blue >= 3 && mean_blue <= 5)) {
+		if((mean_red >= MEAN_RED_MIN_PINK && mean_red <= MEAN_RED_MAX_PINK &&
+			mean_green >= MEAN_GREEN_MIN_PINK && mean_green <= MEAN_GREEN_MAX_PINK &&
+			mean_blue >= MEAN_BLUE_MIN_PINK && mean_blue <= MEAN_BLUE_MAX_PINK)) {
 			set_see_red(true);
 			set_led_color(pink);
-			//playMelody(WE_ARE_THE_CHAMPIONS, ML_FORCE_CHANGE, NULL);
-		} else if(mean_red >= 5 && mean_red <= 7 &&
-				mean_green >= 17 && mean_green <= 19 &&
-				mean_blue >= 9 && mean_blue <= 11) {
-			//playMelody(MARIO_DEATH, ML_FORCE_CHANGE, NULL);
+			playMelody(WE_ARE_THE_CHAMPIONS, ML_FORCE_CHANGE, NULL);
+		} else if(mean_red >= MEAN_RED_MIN_WHITE && mean_red <= MEAN_RED_MAX_WHITE &&
+				mean_green >= MEAN_GREEN_MIN_WHITE && mean_green <= MEAN_GREEN_MAX_WHITE &&
+				mean_blue >= MEAN_BLUE_MIN_WHITE && mean_blue <= MEAN_BLUE_MAX_WHITE) {
+			playMelody(MARIO_DEATH, ML_FORCE_CHANGE, NULL);
 			set_see_white(true);
 			set_led_color(white);
-		} else if(mean_red >= 1 && mean_red <= 3 &&
-				mean_green >= 9 && mean_green <= 12 &&
-				mean_blue >= 8 && mean_blue <= 10){
-			//playMelody(MARIO_FLAG, ML_FORCE_CHANGE, NULL);
+		} else if(mean_red >= MEAN_RED_MIN_BLUE && mean_red <= MEAN_RED_MAX_BLUE &&
+				mean_green >= MEAN_GREEN_MIN_BLUE && mean_green <= MEAN_GREEN_MAX_BLUE &&
+				mean_blue >= MEAN_BLUE_MIN_BLUE && mean_blue <= MEAN_BLUE_MAX_BLUE){
+			playMelody(MARIO_FLAG, ML_FORCE_CHANGE, NULL);
 			set_toggle_period_rgb_led(fast);
 			set_led_color(blue);
-			set_desired_speed((int)(0.4 * (float)MOTOR_SPEED_LIMIT));
-		}else if (mean_red >= 3 && mean_red <= 6 &&
-				mean_green >= 18 && mean_green <= 21 &&
-				mean_blue >= 7 && mean_blue <= 11){//6 20 8
-			//playMelody(MARIO_FLAG, ML_FORCE_CHANGE, NULL);
+			set_desired_speed((int)(FAST_SPEED_COEFF * (float)MOTOR_SPEED_LIMIT));
+		} else if (mean_red >= MEAN_RED_MIN_GREEN && mean_red <= MEAN_RED_MAX_GREEN &&
+				mean_green >= MEAN_GREEN_MIN_GREEN && mean_green <= MEAN_GREEN_MAX_GREEN &&
+				mean_blue >= MEAN_BLUE_MIN_GREEN && mean_blue <= MEAN_BLUE_MAX_GREEN){
+			playMelody(MARIO_FLAG, ML_FORCE_CHANGE, NULL);
 			set_toggle_period_rgb_led(slow);
 			set_led_color(green);
-			set_desired_speed((int)(0.2 * (float)MOTOR_SPEED_LIMIT));
+			set_desired_speed((int)(SLOW_SPEED_COEFF * (float)MOTOR_SPEED_LIMIT));
 		}
 	}
 }
@@ -151,7 +193,7 @@ static THD_FUNCTION(CaptureImage, arg) {
 	dcmi_set_capture_mode(CAPTURE_ONE_SHOT);
 	dcmi_prepare();
 
-	//wait the system to be ok to disable the auto white-balance
+	//wait the system to be ready to disable the auto white-balance
 	chThdSleepMilliseconds(10);
 	po8030_set_awb(0);
 
@@ -174,11 +216,6 @@ static THD_FUNCTION(ManageCamera, arg) {
     while(1){
     		process_image();
     		manage_robot();
-
-		//chprintf((BaseSequentialStream *)&SD3,"mean_red = %d\r\n",mean_red);
-		//chprintf((BaseSequentialStream *)&SD3,"mean_green = %d\r\n",mean_green);
-		//chprintf((BaseSequentialStream *)&SD3,"mean_blue = %d\r\n",mean_blue);
-
     }
 }
 

@@ -1,4 +1,4 @@
-#include "ch.h" 					//DONT TOUCH : NECESSARY  FOR COMPILATION
+#include "ch.h"
 #include "hal.h"
 #include "memory_protection.h"
 
@@ -9,9 +9,6 @@
 #include <find_path_to_exit.h>
 #include <spi_comm.h>
 
-
-//#include <chprintf.h> //needed for
-//#include <usbcfg.h>	 //the chprintf fonction
 #include "manage_camera.h"
 
 //needed to be able to use proximity sensors
@@ -46,7 +43,6 @@ rgb_led_color get_led_color(void){
 void set_led_color(rgb_led_color color){
 	led_color = color;
 }
-
 
 void turn_on_led(void){
 	switch(get_led_color()){
@@ -90,17 +86,6 @@ void turn_off_led(void){
 	set_rgb_led(LED8, 0, 0, 0);
 }
 
-static void serial_start(void)
-{
-	static SerialConfig ser_cfg = {
-	    115200,
-	    0,
-	    0,
-	    0,
-	};
-
-	sdStart(&SD3, &ser_cfg); // UART3.
-}
 
 void toggle_led(void){
 	turn_on_led();
@@ -109,18 +94,12 @@ void toggle_led(void){
 	chThdSleepMilliseconds(get_toggle_period_rgb_led());
 }
 
-
 int main(void)
 {
 	//OBLIGATION
     halInit();
     chSysInit();
     mpu_init();
-
-    serial_start();
-
-    //start the USB communication
-    usb_start();
 
 	//start thread for RGB leds
 	spi_comm_start();
@@ -145,7 +124,7 @@ int main(void)
     proximity_start();
 	calibrate_ir();
 
-	//playMelody(MARIO_START, ML_FORCE_CHANGE, NULL);
+	playMelody(MARIO_START, ML_FORCE_CHANGE, NULL);
 
 	//starts the thread to find the exit of the labyrinth
 	find_path_to_exit_start();

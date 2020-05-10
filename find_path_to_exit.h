@@ -1,7 +1,6 @@
-#define DISTANCE_DESCRIBING_RIGHT_WALL        120 //experimental value
-#define DISTANCE_DESCRIBING_FORWARD_WALL			250//500//250 //experimental value
-#define DISTANCE_DESCRIBING_LEFT_WALL			90//100//90 //experimental value
-//#define DIAMETER_ROBOT	7.5f
+#define DISTANCE_DESCRIBING_RIGHT_WALL           120  //experimental value
+#define DISTANCE_DESCRIBING_FORWARD_WALL			250  //experimental value
+#define DISTANCE_DESCRIBING_LEFT_WALL			90   //experimental value
 #define LABIRYNTHE_CELL_SIZE						9.5f //The labyrinth is composed of equals cell sizes
 #define MAX_SUM_ERROR							(MOTOR_SPEED_LIMIT/KI)
 #define ERROR_THRESHOLD							150

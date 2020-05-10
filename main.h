@@ -1,24 +1,25 @@
 #include "msgbus/messagebus.h"
 #include "camera/dcmi_camera.h"
-//#include "parameter/parameter.h"
 #include <audio/play_melody.h>
 #include <audio/audio_thread.h>
 
 #define FRONT_RIGHT17	0
-#define FRONT_RIGHT49 	1
 #define RIGHT 			2
-#define BACK_RIGHT		3
-#define BACK_LEFT 		4
 #define LEFT 			5
-#define FRONT_LEFT49 	6
-#define FRONT_LEFT17 	7
+
+#define QUARTER_TURN	(uint16_t)90
+#define HALF_TURN	(uint16_t)180
+
+#define NORMAL_TOGGLE_PERIOD	1000
+#define SLOW_TOGGLE_PERIOD	2000
+#define FAST_TOGGLE_PERIOD	500
 
 extern messagebus_t bus;
 
 typedef enum{
-	slow = 2000,
-	normal = 1000,
-	fast = 500
+	slow = SLOW_TOGGLE_PERIOD,
+	normal = NORMAL_TOGGLE_PERIOD,
+	fast = FAST_TOGGLE_PERIOD
 }toggle_speed;
 
 typedef enum{
