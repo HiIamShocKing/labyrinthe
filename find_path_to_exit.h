@@ -2,7 +2,7 @@
 #define DISTANCE_DESCRIBING_FORWARD_WALL			250  //experimental value
 #define DISTANCE_DESCRIBING_LEFT_WALL			90   //experimental value
 #define LABIRYNTHE_CELL_SIZE						9.5f //The labyrinth is composed of equals cell sizes
-#define MAX_SUM_ERROR							(MOTOR_SPEED_LIMIT/KI)
+#define MAX_SUM_ERROR							314 //experimental value
 #define ERROR_THRESHOLD							150
 #define PROXIMITY_DISTANCE_GOAL					1000
 #define KP										800
